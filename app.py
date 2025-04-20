@@ -2,8 +2,6 @@
 
 import streamlit as st
 import openai
-import os
-import requests
 from gtts import gTTS
 from fpdf import FPDF
 from pptx import Presentation
@@ -13,7 +11,6 @@ from pptx.util import Inches
 try:
     openai.api_key = st.secrets["OPENAI_API_KEY"]
     openai_project_id = st.secrets["OPENAI_PROJECT_ID"]
-    eleven_api_key = st.secrets["ELEVEN_API_KEY"]
 except KeyError:
     st.error("❌ No se encontraron las claves API en los secrets. Revisa la configuración.")
     st.stop()
@@ -89,10 +86,6 @@ with st.form("formulario"):
     precio = st.text_input("Precio o forma de pago")
     llamada = st.text_input("Llamada a la acción")
     submitted = st.form_submit_button("🧠 Generar Guion")
-
-# ✅ Mostrar mensaje al cargar la app si no se ha enviado el formulario
-if not submitted:
-    st.info("👈 Completa los datos del formulario y pulsa 'Generar Guion' para comenzar.")
 
 if submitted:
     with st.spinner("Generando guion..."):
