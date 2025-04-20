@@ -1,8 +1,5 @@
 streamlit
 openai
-python-dotenv
 gtts
-docx
-python-pptx
 fpdf
-requests
+python-pptx
